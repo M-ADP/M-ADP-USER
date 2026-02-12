@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: madp-user-local
+  
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/madp_user_db?serverTimezone=UTC&characterEncoding=UTF-8}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: ${DDL_AUTO:update}
+    show-sql: ${SHOW_SQL:true}
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+    defer-datasource-initialization: true
+
+server:
+  port: ${SERVER_PORT:8081}
+
+web:
+  front-end-url: ${FRONTEND_URL:http://localhost:8080}
+  back-end-url: ${BACKEND_URL:http://localhost:8081}
