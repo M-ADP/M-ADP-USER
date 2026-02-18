@@ -3,7 +3,7 @@ package madp.user.domain.application.service;
 import lombok.RequiredArgsConstructor;
 import madp.user.domain.domain.entity.UserEntity;
 import madp.user.domain.domain.enums.OAuth2Type;
-import madp.user.domain.domain.enums.Role;
+import madp.user.global.enums.Role;
 import madp.user.domain.domain.repository.UserRepository;
 import madp.user.domain.exception.*;
 import madp.user.domain.presentation.dto.request.OAuth2UserInformationRequestDto;
@@ -136,6 +136,7 @@ public class UserService {
     public UserProfileResponseDto getUserProfileByNickname(String nickname) {
         UserEntity userEntity = userRepository.findByNickname(nickname).orElseThrow(UserNotFoundException::new);
         return UserProfileResponseDto.builder()
+                .id(userEntity.getId())
                 .nickname(userEntity.getNickname())
                 .profile(userEntity.getProfile())
                 .build();

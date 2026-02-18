@@ -5,7 +5,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import madp.user.domain.domain.enums.Role;
+import madp.user.global.enums.Role;
 import madp.user.domain.exception.InvalidUserInformationException;
 import madp.user.global.entity.BaseEntity;
 

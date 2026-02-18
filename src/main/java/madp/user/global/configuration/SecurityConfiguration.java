@@ -1,7 +1,7 @@
 package madp.user.global.configuration;
 
 import lombok.RequiredArgsConstructor;
-import madp.user.domain.domain.enums.Role;
+import madp.user.global.enums.Role;
 import madp.user.global.filter.MadpUserInfoExtractorFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
