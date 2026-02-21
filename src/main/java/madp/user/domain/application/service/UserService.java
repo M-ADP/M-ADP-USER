@@ -128,6 +128,7 @@ public class UserService {
         UserEntity userEntity = userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
         return UserProfileResponseDto.builder()
                 .nickname(userEntity.getNickname())
+                .githubId(userEntity.getGithubId())
                 .profile(userEntity.getProfile())
                 .build();
     }
@@ -138,6 +139,7 @@ public class UserService {
         return UserProfileResponseDto.builder()
                 .id(userEntity.getId())
                 .nickname(userEntity.getNickname())
+                .githubId(userEntity.getGithubId())
                 .profile(userEntity.getProfile())
                 .build();
     }
