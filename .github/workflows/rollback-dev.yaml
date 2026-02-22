@@ -1,0 +1,23 @@
+name: Rollback Dev Environment
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_image_tag:
+        description: 'Docker image tag (commit short SHA) to restore'
+        required: true
+        type: string
+
+jobs:
+  call-rollback:
+    permissions:
+      contents: write
+      packages: write
+      pull-requests: write
+    uses: M-ADP/M-ADP-GITHUB-ACTIONS/.github/workflows/rollback.yaml@master
+    with:
+      target_env: "dev"
+      target_image_tag: ${{ inputs.target_image_tag }}
+      deploy_repo: "M-ADP/M-ADP-ARGOCD"
+    secrets:
+      PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
