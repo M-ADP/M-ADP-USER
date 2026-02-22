@@ -3,7 +3,7 @@ name: Deploy to Dev
 on:
   push:
     branches:
-      - 'dev-*' # dev 브랜치 푸시 시 동작
+      - 'dev' # dev 브랜치 푸시 시 동작
 
 jobs:
   call-dev:
@@ -13,7 +13,7 @@ jobs:
       pull-requests: write
     uses: M-ADP/M-ADP-GITHUB-ACTIONS/.github/workflows/dev.yaml@master
     with:
-      deploy_repo: "M-ADP/M-ADP-GIT-OPS"
+      deploy_repo: "M-ADP/M-ADP-ARGOCD"
     secrets:
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
