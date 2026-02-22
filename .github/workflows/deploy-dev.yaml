@@ -1,0 +1,16 @@
+name: Deploy to Dev
+
+on:
+  push:
+    branches:
+      - 'dev-*' # dev 브랜치 푸시 시 동작
+
+jobs:
+  call-dev:
+    uses: M-ADP/M-ADP-GITHUB-ACTIONS/.github/workflows/dev.yaml@main
+    with:
+      deploy_repo: "M-ADP/M-ADP-GIT-OPS"
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
