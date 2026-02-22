@@ -7,6 +7,10 @@ on:
 
 jobs:
   call-dev:
+    permissions:
+      contents: write
+      packages: write
+      pull-requests: write
     uses: M-ADP/M-ADP-GITHUB-ACTIONS/.github/workflows/dev.yaml@master
     with:
       deploy_repo: "M-ADP/M-ADP-GIT-OPS"
