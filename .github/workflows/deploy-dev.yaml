@@ -7,7 +7,7 @@ on:
 
 jobs:
   call-dev:
-    uses: M-ADP/M-ADP-GITHUB-ACTIONS/.github/workflows/dev.yaml@main
+    uses: M-ADP/M-ADP-GITHUB-ACTIONS/.github/workflows/dev.yaml@master
     with:
       deploy_repo: "M-ADP/M-ADP-GIT-OPS"
     secrets:
