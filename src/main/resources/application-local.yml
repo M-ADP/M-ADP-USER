@@ -20,6 +20,8 @@ spring:
 
 server:
   port: ${SERVER_PORT:8081}
+  servlet:
+    context-path: "/v${VERSION}"
 
 web:
   front-end-url: ${FRONTEND_URL:http://localhost:8080}
