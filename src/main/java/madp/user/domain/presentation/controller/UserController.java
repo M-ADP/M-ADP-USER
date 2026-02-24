@@ -57,4 +57,10 @@ public class UserController {
         userService.deactivateUserByAdmin(deactivateUserRequestDto.userId());
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/user/profile/id/{id}")
+    public ResponseEntity<UserProfileResponseDto> getUserProfile(@PathVariable Long id) {
+        return ResponseEntity.ok(userService.getUserProfile(id));
+    }
+
 }

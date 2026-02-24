@@ -144,6 +144,17 @@ public class UserService {
                 .build();
     }
 
+    @Transactional(readOnly = true)
+    public UserProfileResponseDto getUserProfile(Long userId) {
+        UserEntity userEntity = userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
+        return UserProfileResponseDto.builder()
+                .id(userEntity.getId())
+                .nickname(userEntity.getNickname())
+                .githubId(userEntity.getGithubId())
+                .profile(userEntity.getProfile())
+                .build();
+    }
+
     @Transactional
     public void updateUserProfile(Long userId, UpdateUserProfileRequestDto updateUserProfileRequestDto) {
         UserEntity user = userRepository.findById(userId)
