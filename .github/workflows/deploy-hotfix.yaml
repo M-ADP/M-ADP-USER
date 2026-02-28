@@ -1,9 +1,9 @@
-name: Deploy to Dev
+name: Deploy Hotfix to Dev
 
 on:
   push:
     branches:
-      - 'dev-*' # dev-0.1.2 등 버전 브랜치 푸시 시 동작
+      - 'hotfix-*' # hotfix 브랜치 푸시 시 동작
 
 jobs:
   call-dev:
