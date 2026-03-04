@@ -1,6 +1,9 @@
 spring:
   application:
     name: madp-user-prod
+  config:
+    import:
+      - file:/vault/secrets/.env[.properties]
 
   datasource:
     url: ${DB_URL}
