@@ -32,6 +32,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'com.github.lian2945:sonyflake:v0.0.7'
     implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+    implementation 'io.github.cdimascio:dotenv-java:3.0.2'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.mysql:mysql-connector-j'
