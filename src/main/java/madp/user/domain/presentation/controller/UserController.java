@@ -28,6 +28,7 @@ public class UserController {
     }
 
     @GetMapping("/user/profile")
+    @Trace
     public ResponseEntity<UserProfileResponseDto> getMyUserProfile(@AuthenticationPrincipal Long userId) {
         return ResponseEntity.ok(userService.getMyUserProfile(userId));
     }
