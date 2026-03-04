@@ -7,7 +7,8 @@ import org.springframework.context.annotation.Configuration;
 public class VaultConfiguration {
     static {
         Dotenv dotenv = Dotenv.configure()
-                .ignoreIfMalformed()
+                .directory("/vault/secrets")
+                .filename(".env")
                 .ignoreIfMissing()
                 .load();
 
