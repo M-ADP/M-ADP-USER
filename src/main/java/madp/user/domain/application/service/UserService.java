@@ -127,6 +127,7 @@ public class UserService {
     public UserProfileResponseDto getMyUserProfile(Long userId) {
         UserEntity userEntity = userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
         return UserProfileResponseDto.builder()
+                .id(userEntity.getId())
                 .nickname(userEntity.getNickname())
                 .githubId(userEntity.getGithubId())
                 .profile(userEntity.getProfile())
