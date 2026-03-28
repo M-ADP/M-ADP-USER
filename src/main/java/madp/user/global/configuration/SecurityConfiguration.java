@@ -39,12 +39,7 @@ public class SecurityConfiguration {
                         .authorities(Role.GUEST.getValue())
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/actuator/health").permitAll()
-                        .requestMatchers("/user/auth-status").permitAll()
-                        .requestMatchers("/user/profile/**").hasAnyRole("USER", "ADMIN")
-                        .requestMatchers("/user/withdraw").hasAnyRole("USER", "ADMIN") 
-                        .requestMatchers("/user/deactivate").hasRole("ADMIN")
-                        .anyRequest().denyAll()
+                        .anyRequest().permitAll()
                 )
                 .addFilterAfter(new MadpUserInfoExtractorFilter(pathMatcher(), excludedPaths), SecurityContextHolderFilter.class);
 
