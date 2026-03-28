@@ -10,6 +10,9 @@ import madp.user.domain.presentation.dto.request.OAuth2UserInformationRequestDto
 import madp.user.domain.presentation.dto.request.UpdateUserProfileRequestDto;
 import madp.user.domain.presentation.dto.response.UserAuthResponseDto;
 import madp.user.domain.presentation.dto.response.UserProfileResponseDto;
+import madp.user.domain.presentation.dto.response.UserSearchResponseDto;
+
+import java.util.List;
 import madp.user.global.annotation.Trace;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -154,6 +157,17 @@ public class UserService {
                 .githubId(userEntity.getGithubId())
                 .profile(userEntity.getProfile())
                 .build();
+    }
+
+    @Transactional(readOnly = true)
+    public List<UserSearchResponseDto> searchUsersByNickname(String nickname) {
+        return userRepository.findByNicknameContaining(nickname).stream()
+                .map(userEntity -> UserSearchResponseDto.builder()
+                        .id(userEntity.getId())
+                        .nickname(userEntity.getNickname())
+                        .profile(userEntity.getProfile())
+                        .build())
+                .toList();
     }
 
     @Transactional

@@ -9,6 +9,9 @@ import madp.user.domain.presentation.dto.request.OAuth2UserInformationRequestDto
 import madp.user.domain.presentation.dto.request.UpdateUserProfileRequestDto;
 import madp.user.domain.presentation.dto.response.UserAuthResponseDto;
 import madp.user.domain.presentation.dto.response.UserProfileResponseDto;
+import madp.user.domain.presentation.dto.response.UserSearchResponseDto;
+
+import java.util.List;
 import madp.user.global.annotation.Trace;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -62,6 +65,11 @@ public class UserController {
     @GetMapping("/user/profile/id/{id}")
     public ResponseEntity<UserProfileResponseDto> getUserProfile(@PathVariable Long id) {
         return ResponseEntity.ok(userService.getUserProfile(id));
+    }
+
+    @GetMapping("/user/search")
+    public ResponseEntity<List<UserSearchResponseDto>> searchUsers(@RequestParam @NotNull(message = "nickname은 필수값입니다.") String nickname) {
+        return ResponseEntity.ok(userService.searchUsersByNickname(nickname));
     }
 
 }
