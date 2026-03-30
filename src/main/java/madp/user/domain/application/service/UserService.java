@@ -116,7 +116,7 @@ public class UserService {
     
     private UserAuthResponseDto completeGithubAuthentication(UserEntity user, OAuth2UserInformationRequestDto request) {
         user.updateFromGithub(
-                request.providerId(),
+                request.name(),
                 request.profile(),
                 request.providerId()
         );
