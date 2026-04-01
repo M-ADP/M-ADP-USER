@@ -14,6 +14,7 @@ import madp.user.domain.presentation.dto.response.UserSearchResponseDto;
 
 import java.util.List;
 import madp.user.global.annotation.Trace;
+import madp.user.global.response.ApiResponseDto;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -127,14 +128,15 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public UserProfileResponseDto getMyUserProfile(Long userId) {
+    public ApiResponseDto<UserProfileResponseDto> getMyUserProfile(Long userId) {
         UserEntity userEntity = userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
-        return UserProfileResponseDto.builder()
+        UserProfileResponseDto data = UserProfileResponseDto.builder()
                 .id(userEntity.getId())
                 .nickname(userEntity.getNickname())
                 .githubId(userEntity.getGithubId())
                 .profile(userEntity.getProfile())
                 .build();
+        return ApiResponseDto.of("성공적으로 유저를 조회했습니다.", data);
     }
 
     @Transactional(readOnly = true)

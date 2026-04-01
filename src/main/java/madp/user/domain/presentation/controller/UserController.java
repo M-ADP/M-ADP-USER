@@ -13,6 +13,7 @@ import madp.user.domain.presentation.dto.response.UserSearchResponseDto;
 
 import java.util.List;
 import madp.user.global.annotation.Trace;
+import madp.user.global.response.ApiResponseDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
@@ -32,7 +33,7 @@ public class UserController {
 
     @GetMapping("/user/profile")
     @Trace
-    public ResponseEntity<UserProfileResponseDto> getMyUserProfile(@AuthenticationPrincipal Long userId) {
+    public ResponseEntity<ApiResponseDto<UserProfileResponseDto>> getMyUserProfile(@AuthenticationPrincipal Long userId) {
         return ResponseEntity.ok(userService.getMyUserProfile(userId));
     }
 
