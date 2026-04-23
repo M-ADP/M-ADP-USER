@@ -9,5 +9,6 @@ public record UserProfileResponseDto(
         String nickname,
         @JsonProperty("github_id")
         String githubId,
+        String email,
         String profile
 ) {}

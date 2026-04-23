@@ -157,6 +157,7 @@ public class UserService {
                 .id(userEntity.getId())
                 .nickname(userEntity.getNickname())
                 .githubId(userEntity.getGithubId())
+                .email(userEntity.getMail())
                 .profile(userEntity.getProfile())
                 .build();
     }
